@@ -35,6 +35,10 @@ body {
   color: var(--text);
 }
 
+button{
+  cursor: pointer;
+}
+
 body,
 input,
 textarea,
