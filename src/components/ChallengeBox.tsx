@@ -37,7 +37,7 @@ const ChallengeBox: React.FC = () => {
             <strong>Finalize um ciclo para receber um desafio</strong>
             <p>
               <img src="icons/level-up.svg" alt="Level Up" />
-              <div>Avance de level completando o desafio.</div>
+              Avance de level completando o desafio.
             </p>
           </div>
         )}
