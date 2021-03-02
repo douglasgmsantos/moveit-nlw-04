@@ -1,0 +1,29 @@
+.containerTimerCountDown {
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.buttonTimer {
+  margin-right: 1rem;
+  background: var(--red-light);
+  height: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  width: 5.0rem;
+  display: flex;
+  justify-content: center;
+  transition: background 0.2s;
+  border: 0;
+  color: var(--white);
+}
+
+.buttonActive{
+  background: var(--red);
+  cursor: not-allowed;
+}
+
+.containerTimerCountDown button:hover {
+  background: var(--red);
+}

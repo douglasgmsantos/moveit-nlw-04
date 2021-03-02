@@ -1,0 +1,91 @@
+.containerMenu{
+  height: 100vh;
+  width: 7rem;
+  background: var(--white);
+  background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(242,243,244,1) 100%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 0;
+}
+
+.containerMenu > button {
+  background: transparent;
+  border:0;
+  width: 100%;
+}
+
+.containerMenu > button > img {
+  width: 40px;
+}
+
+.containerMenu .containerPage{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.containerPage button {
+  width: 100%;
+  background: transparent;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 5px solid var(--white);
+
+  height: 70px;
+}
+
+.containerPage button:hover {
+  border-left: 5px solid var(--red);
+}
+
+.containerPage button.active {
+  border-left: 5px solid var(--red);
+}
+
+.containerPage button svg {
+  width: 40px;
+  height: 40px;
+  color: var(--red);
+}
+
+.containerMenu div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.containerMenu div:last-child button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: transparent;
+  border: 0;
+
+  outline: none;
+}
+
+.containerMenu div:last-child button:disabled{
+  cursor: not-allowed;
+  outline: none;
+  -webkit-animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.containerMenu div:last-child button svg {
+  width: 40px;
+  height: 40px;
+  color: var(--red);
+}
