@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { BiHome, BiLogOut, BiMedal, BiLoaderCircle } from "react-icons/bi";
 import styles from '../../styles/components/Menu.module.css';
 import { AuthContext } from '../../contexts/AuthContext';
+import { useSession } from 'next-auth/client';
 
 interface ILinks {
   hrefText: string;
@@ -13,6 +14,8 @@ interface ILinks {
 
 const Menu = () => {
   const { signOut } = useContext(AuthContext);
+  const [session, loading] = useSession();
+
   const router = useRouter();
   const [links, _] = useState([
     {
@@ -32,7 +35,7 @@ const Menu = () => {
         <img src="logo.png" alt="Move.it" />
       </button>
       <div className={styles.containerPage}>
-        {links.map(({ hrefText, Icon }: ILinks) => {
+        {links.map(({ hrefText, Icon }) => {
           return (
             <Link key={hrefText} href={hrefText} >
               <button className={router.pathname === hrefText ? styles.active : ""}>
