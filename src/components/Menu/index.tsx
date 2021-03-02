@@ -12,7 +12,7 @@ interface ILinks {
 }
 
 const Menu = () => {
-  const { signOut, loading } = useContext(AuthContext);
+  const { signOut } = useContext(AuthContext);
   const router = useRouter();
   const [links, _] = useState([
     {
