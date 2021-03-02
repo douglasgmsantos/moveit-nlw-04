@@ -24,7 +24,7 @@ export const AuthProvider = ({ pageProps, children }: IAuthProvider) => {
 
   const signIn = useCallback((event: FormEvent) => {
     event.preventDefault();
-    handleLogin('google', { callbackUrl: "https://moveit-dg-3v2pr6h44-douglasgmsantos.vercel.app" })
+    handleLogin('google', { callbackUrl: process.env.NEXTAUTH_URL_CALLBACK })
       .then(response => {
         Cookies.set("authenticated", "true");
       });
@@ -32,7 +32,7 @@ export const AuthProvider = ({ pageProps, children }: IAuthProvider) => {
 
   const signOut = useCallback((event: FormEvent) => {
     event.preventDefault();
-    handleLogout({ callbackUrl: "https://moveit-dg-3v2pr6h44-douglasgmsantos.vercel.app/execicios" })
+    handleLogout({ callbackUrl: process.env.NEXTAUTH_URL })
       .then(response => {
         Cookies.remove("authenticated");
       });;
