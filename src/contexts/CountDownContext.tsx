@@ -10,8 +10,10 @@ interface CountDowContextData {
   seconds: number;
   hasFinished: boolean;
   isActive: Boolean;
+  timeUsed: number;
   resetCountDown: () => void;
   startCountDown: () => void;
+  changeTimerUsed: (timer: number) => void;
 }
 let countDownTimeout: NodeJS.Timeout;
 
@@ -20,19 +22,24 @@ export const CountDownContext = createContext({} as CountDowContextData);
 export const CountDownProvider = ({ children }: ICountDownProvider) => {
   const { startNewChallenge } = useContext(ChallengeContext);
 
+  const [timeUsed, setTimeUsed] = useState(1 * 60);
   const [isActive, setIsActive] = useState(false);
-  const [time, setTime] = useState(0.5 * 60);
+  const [time, setTime] = useState(1 * 60);
   const [hasFinished, setHasFinished] = useState(false);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
 
 
+  const changeTimerUsed = (time: number) => {
+    setTimeUsed(time);
+    setTime(time)
+  }
 
   const resetCountDown = () => {
     clearTimeout(countDownTimeout);
     setIsActive(false);
-    setTime(0.5 * 60);
+    setTime(timeUsed);
     setHasFinished(false);
   }
 
@@ -59,7 +66,9 @@ export const CountDownProvider = ({ children }: ICountDownProvider) => {
       hasFinished,
       isActive,
       resetCountDown,
-      startCountDown
+      startCountDown,
+      timeUsed,
+      changeTimerUsed
     }}>
       {children}
     </CountDownContext.Provider>

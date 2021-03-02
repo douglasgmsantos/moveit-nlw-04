@@ -45,7 +45,7 @@
 }
 
 .challengeBoxActive header{
-  color: var(--blue);
+  color: var(--red);
   font-weight: 600;
   font-size: 1.25rem;
   padding: 0 2rem 1.5rem;

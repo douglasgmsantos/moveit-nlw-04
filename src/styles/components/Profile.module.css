@@ -3,6 +3,16 @@
   align-items: center;
 }
 
+.profileContainer > svg{
+  -webkit-animation: spin 1s infinite linear;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .profileContainer > img {
   width: 4.5rem;
   height: 4.5rem;
@@ -26,8 +36,10 @@
 }
 
 
-.profileContainer div p img {
+.profileContainer div p svg {
   margin-right: 0.5rem;
+  color: var(--red);
+  font-weight: bold;
 }
 
 

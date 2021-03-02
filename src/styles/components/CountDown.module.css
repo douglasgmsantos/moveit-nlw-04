@@ -48,7 +48,7 @@
   border: 0;
   border-radius: 5px;
 
-  background: var(--blue);
+  background: var(--red);
   color: var(--white);
 
   font-size: 1.25rem;
@@ -61,11 +61,14 @@
   background: var(--white);
   color: var(--text);
   cursor:not-allowed;
-  border-bottom: 5px solid var(--green);
+  border-bottom: 5px solid var(--red);
 }
 
 .countDownButton:not(:disabled):hover {
-  background: var(--blue-dark);
+  background: var(--red-dark);
+}
+.countDownButton:not(:disabled):hover > .feedbackTime{
+  background: var(--white);
 }
 
 .countDownButtonActive {
@@ -76,4 +79,10 @@
 .countDownButtonActive:not(:disabled):hover {
   background: var(--red);
   color: var(--white);
+}
+
+.feedbackTime{
+  height: 4px;
+  border-radius: 4px;
+  background: var(--red-light);
 }

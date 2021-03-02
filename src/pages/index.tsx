@@ -1,61 +1,17 @@
-import styles from '../styles/components/Home.module.css';
-import { GetServerSideProps } from 'next'
+import Login from "./login";
+import { GetServerSideProps } from "next";
 
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/client";
 
-import Head from 'next/head'
+const Home = () => {
+  const router = useRouter();
+  const [session, _] = useSession();
 
-import ExperienceBar from "../components/ExperienceBar";
-import Profile from "../components/Profile";
-import CompleteChallenges from '../components/CompleteChallenges';
-import CountDown from '../components/CountDown';
-import ChallengeBox from '../components/ChallengeBox';
+  if (Boolean(session))
+    router.replace("/exercicios")
 
-import { CountDownProvider } from '../contexts/CountDownContext';
-import { ChallengeProvider } from '../contexts/ChallengesContext';
-
-interface IProps {
-  level: number;
-  currentExperience: number;
-  challengeCompleted: number;
+  return <Login />
 }
 
-export default function Home(props: IProps) {
-
-  return (
-    <ChallengeProvider
-      level={Number(props.level)}
-      currentExperience={Number(props.currentExperience)}
-      challengeCompleted={Number(props.challengeCompleted)}
-    >
-      <div className={styles.container}>
-        <Head>
-          <link rel="shortcut icon" href="favicon.png" type="image/png" />
-          <title>Início | move.it</title>
-        </Head>
-        <ExperienceBar />
-
-        <CountDownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompleteChallenges />
-              <CountDown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountDownProvider>
-      </div>
-    </ChallengeProvider>
-
-  )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengeCompleted } = ctx.req.cookies;
-
-  return {
-    props: { level, currentExperience, challengeCompleted }
-  }
-}
+export default Home;

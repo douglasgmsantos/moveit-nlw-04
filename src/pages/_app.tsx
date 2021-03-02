@@ -1,11 +1,12 @@
 import "../styles/global.css";
 
-import { ChallengeProvider } from "../contexts/ChallengesContext"
-import { CountDownProvider } from "../contexts/CountDownContext";
+import { AuthProvider } from "../contexts/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+    <AuthProvider pageProps={pageProps} >
+      <Component {...pageProps} />
+    </AuthProvider>
   )
 }
 
